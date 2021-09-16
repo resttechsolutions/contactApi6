@@ -26,7 +26,6 @@ public class AddressService implements IService<Address, Long> {
     @Override
     public Address create(Address address) throws Exception {
         log.info("AddressService create init");
-
         try{
 
             if (address.getId() != null)
@@ -35,7 +34,7 @@ public class AddressService implements IService<Address, Long> {
 //                throw new AddressEmptyFieldException("All the fields must be filled up");
 
             mailService.sendMailNotification("rafaelalfonso82@gmail.com", "ContactApi address created", "The address was created");
-
+            log.info("saving address");
             return service.save(address);
         } catch (Exception e){
             log.error("The address couldn\'t be created");
