@@ -10,7 +10,7 @@ public abstract class AbstractResource <T, P>{
     @PostMapping(value = {"", "/"})
     public abstract ResponseEntity<Response> create(@RequestBody T t, @Autowired Response response);
 
-    @GetMapping({"","/{id}"})
+    @GetMapping({"/{id}"})
     public abstract ResponseEntity<Response> findById(@PathVariable("id") P p, @Autowired Response response);
 
     @GetMapping({"","/"})
