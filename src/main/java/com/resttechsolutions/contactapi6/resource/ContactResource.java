@@ -104,7 +104,7 @@ public class ContactResource extends AbstractResource<ContactRequestDTO, Long> {
 
         try{
 
-            response.response.put("data", GenericMapper.map(this.contactService.findAll(), ContactResponseDTO.class, this.modelMapper));
+            response.response.put("data", GenericMapper.mapCollection(this.contactService.findAll(), ContactResponseDTO.class, this.modelMapper));
             response.response.put("code", ResponseDictionary.SUCCESS_CODE);
             response.response.put("message", HttpStatus.FOUND);
 
@@ -173,7 +173,7 @@ public class ContactResource extends AbstractResource<ContactRequestDTO, Long> {
 
             response.response.put("data", null);
             response.response.put("code", ResponseDictionary.SUCCESS_CODE);
-            response.response.put("message", HttpStatus.FOUND);
+            response.response.put("message", HttpStatus.GONE);
 
             return new ResponseEntity<>(response, HttpStatus.OK);
 

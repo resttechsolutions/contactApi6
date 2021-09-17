@@ -110,7 +110,7 @@ public class ContactService implements IService<Contact, Long> {
 
     @Override
     public void delete(Long aLong) throws Exception {
-        log.info("ContactService update init");
+        log.info("ContactService delete init");
 
         try{
 
@@ -122,9 +122,9 @@ public class ContactService implements IService<Contact, Long> {
             if (contact == null)
                 throw new ContactNotFoundException("The contact to be deleted doesn\'t exist");
 
-            mailService.sendMailNotification("rafaelalfonso82@gmail.com", "ContactApi contact deleted", "The contact was deleted");
-
             service.delete(contact);
+
+            mailService.sendMailNotification("rafaelalfonso82@gmail.com", "ContactApi contact deleted", "The contact was deleted");
         } catch (Exception e){
             log.error("The contact couldn\'t be deleted");
             e.printStackTrace();

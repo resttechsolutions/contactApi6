@@ -24,4 +24,14 @@ public class Contact extends AbstractPersistable<Long> {
     private List<Phone> phones;
     @OneToMany(mappedBy = "contact", cascade = {CascadeType.PERSIST}, orphanRemoval = true)
     private List<Address> addresses;
+
+    public void setPhones(List<Phone> phones) {
+        phones.forEach(item -> item.setContact(this));
+        this.phones = phones;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        addresses.forEach(item -> item.setContact(this));
+        this.addresses = addresses;
+    }
 }
